@@ -1,4 +1,4 @@
-# University of Batangas — Lipa Campus
+# University of Batangas — Lipa Campus (A.Y. 2025 - 2026)
 
 ## Microprocessor Lab Finals — MazeBot
 
