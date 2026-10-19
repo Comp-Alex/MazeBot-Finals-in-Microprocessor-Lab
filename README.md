@@ -1,101 +1,121 @@
-# University of Batangas — Lipa Campus (A.Y. 2025 - 2026)
+<div align="center">
+  <img src="dashboard/assets/maze-bot.svg" alt="MazeBot line-art icon" width="96">
+  <h1>MazeBot Engineering Dashboard</h1>
+  <p>Maze-solving robot · Microprocessor Lab Finals · A.Y. 2025–2026</p>
+  <p><strong>Last updated:</strong> 2026-10-19 UTC</p>
+</div>
 
-## Microprocessor Lab Finals — MazeBot
+> A living project snapshot generated from `dashboard/config.json` and repository history. Progress percentages are engineering estimates based on checked-in evidence, not automated hardware test results.
 
-This repository contains the MazeBot Arduino sketch and detailed documentation for the maze-solving robot developed for the Microprocessor Lab. The project implements a reactive left-wall-following strategy using two ultrasonic sensors and a simple anti-stuck routine. The goal is to provide a reliable, easy-to-tune system for navigating standard rectangular mazes.
+## Robot specifications
 
-**Contents**
-- `Maze-CPE2026.png` — Top-view image of the maze.
-- `MazeBotFinals.ino` — Main Arduino sketch for the maze-solving robot. Contains the left-wall-following control loop, ultrasonic sensor reading, emergency and dead-end recovery logic, and motion functions for forward movement and turns.
-- `README.md` — Project documentation: hardware summary, pin mapping, configuration and tuning guidance, behavior details, and contributor credits.
-- `Speedup run of Mazebot.mp4` — Time-lapse (sped-up) video of the MazeBot running through the maze.
+| Subsystem | Specification |
+|---|---|
+| Controller | Arduino Uno (or compatible) |
+| Motor driver | L298N dual H-bridge |
+| Drive | 2 × 9 V DC motors · differential drive |
+| Distance sensors | 2 × HC-SR04 ultrasonic (left and front) |
+| Power | 5,000 mAh power bank · TP4056 charging module · XL6009 motor supply boost |
+| Chassis | Acrylic, 22 × 16 cm |
 
-### Hardware
-- Microcontroller: Arduino Uno (or compatible)
-- Motor driver: L298N dual H-bridge
-- Drive: 2 × 9V DC motors (differential drive)
-- Sensors: 2 × HC-SR04 ultrasonic sensors (left and front)
-- TP4056 charging module
-- XL6009 step-up booster (adjustable voltage to power the motors)
-- Power: 5000 mAh power bank
-- Chassis: acrylic (22 × 16 cm)
-- Wheels and motor brackets
-- Breadboard
-- Jumper wires (male–male, male–female)
+### Motor and sensor pinout
 
-### Pinout
-Refer to the top of `MazeBotFinals.ino` for exact defines. Summary below:
-- ENA (left motor PWM): pin 5
-- IN1/IN2 (left motor direction): pins 4, 3
-- ENB (right motor PWM): pin 6
-- IN3/IN4 (right motor direction): pins 7, 8
-- Left ultrasonic: trig A0, echo A1
-- Front ultrasonic: trig A2, echo A3
+| Signal | Arduino pin(s) |
+|---|---:|
+| Left motor PWM (ENA) | 5 |
+| Left motor direction (IN1 / IN2) | 4 / 3 |
+| Right motor PWM (ENB) | 6 |
+| Right motor direction (IN3 / IN4) | 7 / 8 |
+| Left ultrasonic (TRIG / ECHO) | A0 / A1 |
+| Front ultrasonic (TRIG / ECHO) | A2 / A3 |
 
-### Configuration & Tuning
-This section explains the key constants, what they control, and a recommended procedure to tune them safely.
+## Engineering milestones
 
-Key parameters (defined at top of `MazeBotFinals.ino`):
-- `BASE_SPEED_LEFT`, `BASE_SPEED_RIGHT` — Base PWM values (0–255) controlling motor speed. Start low and increase until the motors move reliably without stalling.
-- `STUCK_DIST` — Distance (cm) that counts as "too close" and triggers an emergency reverse.
-- `MIN_WALL_DIST` / `MAX_WALL_DIST` — Target window for left-wall following. The robot adjusts wheel speeds when the left distance falls outside this range.
-- `OPEN_WALL_DIST` — Threshold to detect when the left side is open (room to turn left).
-- `FRONT_WALL_DIST` — Threshold for considering the front blocked (dead end) and triggering a 180° turn.
-- `TURN_90_TIME`, `TURN_180_TIME` — Milliseconds the robot applies differential wheel actions to perform approximate turns. These values depend on motor speed, wheel diameter, and battery voltage.
+**Estimated engineering milestone completion: 56%**  
+` 56%` `███████████░░░░░░░░░`  
+Average of 8 configured milestone estimates.
 
-Recommended tuning steps:
-1. Power the robot off and verify wiring matches the `Pinout` section.
-2. With no obstacles, upload the sketch and open the Serial Monitor at `9600` baud.
-3. Start with `BASE_SPEED_*` around `100–120` and test forward motion in short bursts. If motors stall, raise the speed; if motors are too fast or unstable, lower the speed.
-4. Tune turning constants:
-	- Place the robot in an open area and run a test to perform a 90° command (use `turn90Left()` by temporarily calling it or by observing behavior during a normal run when the left side is detected as open).
-	- Adjust `TURN_90_TIME` until the physical rotation matches ~90°. Repeat for `TURN_180_TIME`.
-5. Wall-follow thresholds:
-	- Stand alongside a wall and watch `Left:` readings in the Serial Monitor. Set `MIN_WALL_DIST` and `MAX_WALL_DIST` around the typical measured distance ±5 cm to produce gentle corrections.
-6. Stuck detection:
-	- If the robot tends to get wedged, consider increasing `STUCK_TIMEOUT` or tweaking the emergency reverse durations in the code.
+| Workstream | Status | Progress | Repository evidence |
+|---|---|---:|---|
+| Embedded firmware and I/O bring-up | Implemented | `100%` `████████████████████` | Arduino setup, GPIO initialization, and 9600-baud serial diagnostics. |
+| Ultrasonic sensor integration | Implemented | `100%` `████████████████████` | Left and front HC-SR04 readings with a bounded pulse measurement. |
+| Differential-drive motor control | Implemented | `100%` `████████████████████` | L298N direction/PWM control, forward motion, stopping, and timed turns. |
+| Reactive maze navigation | Implemented | `100%` `████████████████████` | Left-wall following, open-left turns, dead-end turns, and emergency reverse. |
+| Repeatable hardware calibration | In progress | ` 45%` `█████████░░░░░░░░░░░` | Tunable thresholds and turn durations are documented; repeatability still needs measured test results. |
+| Closed-loop PID motion control | Planned | `  0%` `░░░░░░░░░░░░░░░░░░░░` | Current firmware uses fixed PWM values and timed turns; no PID loop is present. |
+| Wheel encoder odometry | Planned | `  0%` `░░░░░░░░░░░░░░░░░░░░` | No wheel encoders or position feedback are currently documented. |
+| Non-blocking control and fault handling | Planned | `  0%` `░░░░░░░░░░░░░░░░░░░░` | The current control loop uses delay(); scheduling and sensor-fault handling can be improved. |
 
-Safety & notes:
-- Always keep the robot on a test mat or other controlled surface while tuning.
-- Disconnect the motors when adjusting wiring or changing the mounting.
-- Battery voltage affects motor speed; retune `TURN_*_TIME` and `BASE_SPEED_*` after changing the battery or motor load.
+## Embedded systems and control
 
-### Behavior Summary
-The control logic is organized as a prioritized reactive sequence evaluated in `loop()`:
+The Arduino sketch initializes the motor-driver and ultrasonic I/O, reports left/front distances over Serial at **9600 baud**, and runs a prioritized reactive controller:
 
-1. Anti-stuck monitor
-	- Tracks changes in combined sensor readings. If the readings remain static for the duration of `STUCK_TIMEOUT`, the robot performs an emergency reverse to free itself.
+1. Read left and front HC-SR04 distances.
+2. Attempt an emergency reverse if readings are dangerously close or appear unchanged for the stuck timeout.
+3. Turn right at a front dead end; take a left turn when the left side is open.
+4. Otherwise, adjust the two motor PWM values to follow the left wall.
 
-2. Emergency front/backups
-	- If the front distance is below `STUCK_DIST`: perform a short reverse.
-	- If the left distance is below `STUCK_DIST`: perform a short reverse biased to the right to avoid the wall.
+Motor commands are open-loop: the sketch uses fixed PWM values and timed turns. **PID control and wheel encoder feedback are not implemented yet.**
 
-3. Dead-end handling
-	- If `distFront < FRONT_WALL_DIST`: stop and execute `turn180Right()` to escape the dead end.
+### Current tuning reference
 
-4. Left-open detection
-	- If `distLeft > OPEN_WALL_DIST`: the robot moves slightly forward, executes `turn90Left()`, and proceeds — effectively taking the left turn when available.
+| Parameter | Current value | Purpose |
+|---|---:|---|
+| Left / right base PWM | 110 / 110 | 0–255 PWM; tune at low speed on a clear test surface. |
+| Emergency proximity | 6 cm | Reverse if a valid front or left reading is closer. |
+| Left-wall correction window | 15–25 cm | Steering corrections are based on the left sensor. |
+| Open-left threshold | 35 cm | Advance, then execute a timed left turn. |
+| Front dead-end threshold | 15 cm | Execute a timed 180° right turn. |
+| 90° / 180° turn duration | 120 / 220 ms | Open-loop timing; recalibrate when battery or load changes. |
+| Stuck timeout | 5 s | Triggers a timed emergency reverse when readings appear unchanged. |
 
-5. Normal wall-follow corrections
-	- If left distance < `MIN_WALL_DIST`: the robot steers right by slowing the right motor.
-	- If left distance > `MAX_WALL_DIST`: the robot steers left by slowing the left motor.
-	- Otherwise, drive straight using `BASE_SPEED_*`.
+`getDistance()` uses a 25 ms `pulseIn()` timeout and maps a missing/invalid echo to 999 cm. Treat that sentinel carefully when validating sensor health; it can otherwise resemble an open path.
 
-### Serial Debugging
-Open the Serial Monitor at `9600` baud. Typical output:
+## Future improvements
 
-Left: 18 cm | Front: 40 cm
+- Add wheel encoders and use closed-loop PID to balance wheel speed and improve turn accuracy.
+- Replace blocking delays with a millis()-based state machine so sensing and safety checks remain responsive.
+- Validate ultrasonic readings (timeouts, outliers, and cross-talk) and expose sensor faults in diagnostics.
+- Log repeatable course runs, calibration values, and success rate so navigation changes can be compared objectively.
+- Re-test motor thresholds and battery behavior under load; document safe voltage limits for the motor supply.
 
-Use these readings to verify sensor health, tune thresholds, and diagnose odd behavior.
+## Repository statistics
 
-### Contributors
-- Aaron Ludwig Altar — Code debugging, Video documentation
-- Alexander John Balagso — Code debugging, Code documentation
-- Carl Jayson Eli Bonaobra — Code debugging, Hardware debugging
-- Ronald William Geron — Hardware debugging, MazeBot design
+| Stars / forks / open issues | Unavailable offline |
+| Tracked files | 4 |
+| Git commits | 3 |
+| Contributors in local history | 2 |
 
-### Laboratory Advisor
-- Engr. Charles Ray B. Juanillas
+## Recent commits
 
-### License
-Use and modify this code for lab and learning purposes. Please credit your team when sharing.
+| Date | Commit |
+|---|---|
+| 2026-06-03 | `19c50ed` Documentation |
+| 2026-06-03 | `40f0c20` Documentation |
+| 2026-06-03 | `55c47d9` Initial commit |
+
+## Maze and run footage
+
+![Maze course](<Maze-CPE2026.jpg>)
+
+[View the MazeBot run video](<Speedup run of Mazebot.mp4>)
+
+## Team
+
+- Aaron Ludwig Altar — code debugging, video documentation
+- Alexander John Balagso — code debugging, code documentation
+- Carl Jayson Eli Bonaobra — code debugging, hardware debugging
+- Ronald William Geron — hardware debugging, MazeBot design
+
+**Laboratory advisor:** Engr. Charles Ray B. Juanillas
+
+## Safe testing notes
+
+- Test on a clear, controlled surface and start with low motor PWM.
+- Disconnect power before changing wiring.
+- Battery voltage and motor load change turn behavior; recalibrate after changing either.
+- Verify the XL6009 output and motor-driver supply against component ratings before connecting the motors.
+
+---
+
+Generated daily by [`.github/workflows/dashboard.yml`](.github/workflows/dashboard.yml). To refresh locally, run `python dashboard/dashboard.py --offline` from the repository root. The script uses only the Python standard library.

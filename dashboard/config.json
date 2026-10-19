@@ -1,0 +1,97 @@
+{
+  "project_name": "MazeBot",
+  "subtitle": "Maze-solving robot · Microprocessor Lab Finals · A.Y. 2025–2026",
+  "repository": "Comp-Alex/MazeBot-Finals-in-Microprocessor-Lab",
+  "firmware_file": "MazeBotFinals.ino",
+  "specifications": [
+    ["Controller", "Arduino Uno (or compatible)"],
+    ["Motor driver", "L298N dual H-bridge"],
+    ["Drive", "2 × 9 V DC motors · differential drive"],
+    ["Distance sensors", "2 × HC-SR04 ultrasonic (left and front)"],
+    ["Power", "5,000 mAh power bank · TP4056 charging module · XL6009 motor supply boost"],
+    ["Chassis", "Acrylic, 22 × 16 cm"]
+  ],
+  "milestones": [
+    {
+      "name": "Embedded firmware and I/O bring-up",
+      "status": "Implemented",
+      "progress": 100,
+      "evidence": "Arduino setup, GPIO initialization, and 9600-baud serial diagnostics."
+    },
+    {
+      "name": "Ultrasonic sensor integration",
+      "status": "Implemented",
+      "progress": 100,
+      "evidence": "Left and front HC-SR04 readings with a bounded pulse measurement."
+    },
+    {
+      "name": "Differential-drive motor control",
+      "status": "Implemented",
+      "progress": 100,
+      "evidence": "L298N direction/PWM control, forward motion, stopping, and timed turns."
+    },
+    {
+      "name": "Reactive maze navigation",
+      "status": "Implemented",
+      "progress": 100,
+      "evidence": "Left-wall following, open-left turns, dead-end turns, and emergency reverse."
+    },
+    {
+      "name": "Repeatable hardware calibration",
+      "status": "In progress",
+      "progress": 45,
+      "evidence": "Tunable thresholds and turn durations are documented; repeatability still needs measured test results."
+    },
+    {
+      "name": "Closed-loop PID motion control",
+      "status": "Planned",
+      "progress": 0,
+      "evidence": "Current firmware uses fixed PWM values and timed turns; no PID loop is present."
+    },
+    {
+      "name": "Wheel encoder odometry",
+      "status": "Planned",
+      "progress": 0,
+      "evidence": "No wheel encoders or position feedback are currently documented."
+    },
+    {
+      "name": "Non-blocking control and fault handling",
+      "status": "Planned",
+      "progress": 0,
+      "evidence": "The current control loop uses delay(); scheduling and sensor-fault handling can be improved."
+    }
+  ],
+  "future_improvements": [
+    "Add wheel encoders and use closed-loop PID to balance wheel speed and improve turn accuracy.",
+    "Replace blocking delays with a millis()-based state machine so sensing and safety checks remain responsive.",
+    "Validate ultrasonic readings (timeouts, outliers, and cross-talk) and expose sensor faults in diagnostics.",
+    "Log repeatable course runs, calibration values, and success rate so navigation changes can be compared objectively.",
+    "Re-test motor thresholds and battery behavior under load; document safe voltage limits for the motor supply."
+  ],
+  "pinout": [
+    ["Left motor PWM (ENA)", "5"],
+    ["Left motor direction (IN1 / IN2)", "4 / 3"],
+    ["Right motor PWM (ENB)", "6"],
+    ["Right motor direction (IN3 / IN4)", "7 / 8"],
+    ["Left ultrasonic (TRIG / ECHO)", "A0 / A1"],
+    ["Front ultrasonic (TRIG / ECHO)", "A2 / A3"]
+  ],
+  "tuning": [
+    ["Left / right base PWM", "110 / 110", "0–255 PWM; tune at low speed on a clear test surface."],
+    ["Emergency proximity", "6 cm", "Reverse if a valid front or left reading is closer."],
+    ["Left-wall correction window", "15–25 cm", "Steering corrections are based on the left sensor."],
+    ["Open-left threshold", "35 cm", "Advance, then execute a timed left turn."],
+    ["Front dead-end threshold", "15 cm", "Execute a timed 180° right turn."],
+    ["90° / 180° turn duration", "120 / 220 ms", "Open-loop timing; recalibrate when battery or load changes."],
+    ["Stuck timeout", "5 s", "Triggers a timed emergency reverse when readings appear unchanged."]
+  ],
+  "contributors": [
+    "Aaron Ludwig Altar — code debugging, video documentation",
+    "Alexander John Balagso — code debugging, code documentation",
+    "Carl Jayson Eli Bonaobra — code debugging, hardware debugging",
+    "Ronald William Geron — hardware debugging, MazeBot design"
+  ],
+  "advisor": "Engr. Charles Ray B. Juanillas",
+  "image": "Maze-CPE2026.jpg",
+  "video": "Speedup run of Mazebot.mp4"
+}
