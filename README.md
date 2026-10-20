@@ -2,7 +2,7 @@
   <img src="dashboard/assets/maze-bot.svg" alt="MazeBot line-art icon" width="96">
   <h1>MazeBot Engineering Dashboard</h1>
   <p>Maze-solving robot · Microprocessor Lab Finals · A.Y. 2025–2026</p>
-  <p><strong>Last updated:</strong> 2026-10-19 UTC</p>
+  <p><strong>Last updated:</strong> 2026-10-20 UTC</p>
 </div>
 
 > A living project snapshot generated from `dashboard/config.json` and repository history. Progress percentages are engineering estimates based on checked-in evidence, not automated hardware test results.
@@ -84,15 +84,16 @@ Motor commands are open-loop: the sketch uses fixed PWM values and timed turns. 
 | Stars | 0 |
 | Forks | 0 |
 | Open issues | 0 |
-| GitHub repository size | 6,463 KB |
+| GitHub repository size | 6,474 KB |
 | Tracked files | 9 |
-| Git commits | 4 |
-| Contributors in local history | 2 |
+| Git commits | 5 |
+| Contributors in local history | 3 |
 
 ## Recent commits
 
 | Date | Commit |
 |---|---|
+| 2026-10-19 | [`a39bce5` chore: refresh robotics dashboard [skip ci]](https://github.com/Comp-Alex/MazeBot-Finals-in-Microprocessor-Lab/commit/a39bce5e0d9f787df85ca76e8521838b4922a301) |
 | 2026-10-19 | [`37d4dd8` Add automated MazeBot engineering dashboard](https://github.com/Comp-Alex/MazeBot-Finals-in-Microprocessor-Lab/commit/37d4dd84852d1d2c1b1ec2ca7af4d1e202b248a5) |
 | 2026-06-03 | [`19c50ed` Documentation](https://github.com/Comp-Alex/MazeBot-Finals-in-Microprocessor-Lab/commit/19c50ed0ec6ff71d9926b9574f7ba74cfe8af977) |
 | 2026-06-03 | [`40f0c20` Documentation](https://github.com/Comp-Alex/MazeBot-Finals-in-Microprocessor-Lab/commit/40f0c202a7f91113c1414a09ca4dee99ee558fc7) |
