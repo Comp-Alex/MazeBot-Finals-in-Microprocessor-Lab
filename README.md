@@ -2,7 +2,7 @@
   <img src="dashboard/assets/maze-bot.svg" alt="MazeBot line-art icon" width="96">
   <h1>MazeBot Engineering Dashboard</h1>
   <p>Maze-solving robot · Microprocessor Lab Finals · A.Y. 2025–2026</p>
-  <p><strong>Last updated:</strong> 2026-10-22 UTC</p>
+  <p><strong>Last updated:</strong> 2026-10-23 UTC</p>
 </div>
 
 > A living project snapshot generated from `dashboard/config.json` and repository history. Progress percentages are engineering estimates based on checked-in evidence, not automated hardware test results.
@@ -84,20 +84,20 @@ Motor commands are open-loop: the sketch uses fixed PWM values and timed turns. 
 | Stars | 0 |
 | Forks | 0 |
 | Open issues | 0 |
-| GitHub repository size | 6,479 KB |
+| GitHub repository size | 6,482 KB |
 | Tracked files | 9 |
-| Git commits | 7 |
+| Git commits | 8 |
 | Contributors in local history | 3 |
 
 ## Recent commits
 
 | Date | Commit |
 |---|---|
+| 2026-10-22 | [`8012fb4` chore: refresh robotics dashboard [skip ci]](https://github.com/Comp-Alex/MazeBot-Finals-in-Microprocessor-Lab/commit/8012fb4a59e9d40513468a7ed4120e11e9154902) |
 | 2026-10-21 | [`c440aa2` chore: refresh robotics dashboard [skip ci]](https://github.com/Comp-Alex/MazeBot-Finals-in-Microprocessor-Lab/commit/c440aa21d48ab830680ac118ac40a3bccabb1770) |
 | 2026-10-20 | [`9d1ea5e` chore: refresh robotics dashboard [skip ci]](https://github.com/Comp-Alex/MazeBot-Finals-in-Microprocessor-Lab/commit/9d1ea5e5b23631ee29f3da61b153df45ec414af4) |
 | 2026-10-19 | [`a39bce5` chore: refresh robotics dashboard [skip ci]](https://github.com/Comp-Alex/MazeBot-Finals-in-Microprocessor-Lab/commit/a39bce5e0d9f787df85ca76e8521838b4922a301) |
 | 2026-10-19 | [`37d4dd8` Add automated MazeBot engineering dashboard](https://github.com/Comp-Alex/MazeBot-Finals-in-Microprocessor-Lab/commit/37d4dd84852d1d2c1b1ec2ca7af4d1e202b248a5) |
-| 2026-06-03 | [`19c50ed` Documentation](https://github.com/Comp-Alex/MazeBot-Finals-in-Microprocessor-Lab/commit/19c50ed0ec6ff71d9926b9574f7ba74cfe8af977) |
 
 ## Maze and run footage
 
