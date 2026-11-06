@@ -2,7 +2,7 @@
   <img src="dashboard/assets/maze-bot.svg" alt="MazeBot line-art icon" width="96">
   <h1>MazeBot Engineering Dashboard</h1>
   <p>Maze-solving robot · Microprocessor Lab Finals · A.Y. 2025–2026</p>
-  <p><strong>Last updated:</strong> 2026-11-05 UTC</p>
+  <p><strong>Last updated:</strong> 2026-11-06 UTC</p>
 </div>
 
 > A living project snapshot generated from `dashboard/config.json` and repository history. Progress percentages are engineering estimates based on checked-in evidence, not automated hardware test results.
@@ -84,20 +84,20 @@ Motor commands are open-loop: the sketch uses fixed PWM values and timed turns. 
 | Stars | 0 |
 | Forks | 0 |
 | Open issues | 0 |
-| GitHub repository size | 6,507 KB |
+| GitHub repository size | 6,510 KB |
 | Tracked files | 9 |
-| Git commits | 21 |
+| Git commits | 22 |
 | Contributors in local history | 3 |
 
 ## Recent commits
 
 | Date | Commit |
 |---|---|
+| 2026-11-05 | [`2f4ef35` chore: refresh robotics dashboard [skip ci]](https://github.com/Comp-Alex/MazeBot-Finals-in-Microprocessor-Lab/commit/2f4ef356c76c110f757d9fa816b05fb3063928a0) |
 | 2026-11-04 | [`b0a85d1` chore: refresh robotics dashboard [skip ci]](https://github.com/Comp-Alex/MazeBot-Finals-in-Microprocessor-Lab/commit/b0a85d1ab8eac70d92c2534d417ee560b4119da2) |
 | 2026-11-03 | [`0561699` chore: refresh robotics dashboard [skip ci]](https://github.com/Comp-Alex/MazeBot-Finals-in-Microprocessor-Lab/commit/05616995819262d7879a6391273e37ac54f9abeb) |
 | 2026-11-02 | [`1d7195e` chore: refresh robotics dashboard [skip ci]](https://github.com/Comp-Alex/MazeBot-Finals-in-Microprocessor-Lab/commit/1d7195e072b20a5d62282086d66f8fba3fda49fb) |
 | 2026-11-01 | [`5bd3b66` chore: refresh robotics dashboard [skip ci]](https://github.com/Comp-Alex/MazeBot-Finals-in-Microprocessor-Lab/commit/5bd3b6681d61d7d214b2e4041abaeaf13e52c448) |
-| 2026-10-31 | [`e81978f` chore: refresh robotics dashboard [skip ci]](https://github.com/Comp-Alex/MazeBot-Finals-in-Microprocessor-Lab/commit/e81978fe46095a0bbc0f67bbdcecdef5812344d6) |
 
 ## Maze and run footage
 
